@@ -6,5 +6,5 @@
 - DS3615xs/DS3617xs 现有驱动全选会编不过, 空间不足.
 - DS918+ 7.1.1 在dev模式下才会包含 virtio 扩展.
 - 整个编译过程一般在5分钟左右(受驱动数量和版本影响), 并发较多时有概率出现未触发或者网络阻塞的情况, 如长时间未收到[bot]的回复, 请reopen或者重新创建Issue.
-- igc 1.2.3 已更新, 修复对i226的支持 (2022/11/16 22:41:38), 暂时请使用dev模式编译.
+- igc最新驱动: https://raw.githubusercontent.com/jim3ma/synology-igc/main/igc/rpext-index.json.
 ```
