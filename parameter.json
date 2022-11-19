@@ -43,7 +43,7 @@
     },
     "config": {
         "name": "config",
-        "description": "如不了解请保持默认, 设置默认 user_config.json, 默认: 无",
+        "description": "如不了解请保持默认, 设置 user_config.json 的 base 参数, 默认: 无",
         "detailedinfo": "config会被优先读取, 因此以下参数会覆盖config的内容. 仅建议在以下配置项无法满足需求时使用.",
         "required": false,
         "default": "",
