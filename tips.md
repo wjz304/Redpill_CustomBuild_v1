@@ -7,6 +7,6 @@
 - DS3615xs/DS3617xs 或者 6.2.4 现有驱动全选会编不过, 空间不足.
 - DS918+ 7.1.1 在dev模式下才会包含 virtio 扩展.
 - 整个编译过程一般在5分钟左右(受驱动数量和版本影响), 并发较多时有概率出现未触发或者网络阻塞的情况, 如长时间未收到[bot]的回复, 请reopen或者重新创建Issue.
-- igc驱动(原库地址): https://raw.githubusercontent.com/jim3ma/synology-igc/main/igc/rpext-index.json.
+- igc驱动已更新1.3.0修复内存问题。(原库地址): https://raw.githubusercontent.com/jim3ma/synology-igc/main/igc/rpext-index.json.
 - 如果你看不懂, 或者其他疑难杂症, 请不要浪费时间. 尝试使用arpl构建. https://github.com/fbelavenuto/arpl
 ```
