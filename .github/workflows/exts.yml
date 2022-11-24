@@ -37,6 +37,11 @@ jobs:
           rm -f rp-ext_pocopico/nct6775/releases/dva3221_42218.json
           rm -f rp-ext_pocopico/sfc/releases/ds918p_25556.json
           rm -f rp-ext_pocopico/v9fs/releases/ds918p_42218.json
+        
+          #igc 临时对策
+          rm -rf rp-ext_pocopico/igc
+          svn co https://github.com/jim3ma/synology-igc/trunk/igc rp-ext_pocopico/igc
+
 
           sudo rm -rf rp-ext_wjz304
           git clone https://github.com/wjz304/rp-ext rp-ext_wjz304
@@ -47,6 +52,11 @@ jobs:
           rm -f rp-ext_wjz304/nct6775/releases/dva3221_42218.json
           rm -f rp-ext_wjz304/sfc/releases/ds918p_25556.json
           rm -f rp-ext_wjz304/v9fs/releases/ds918p_42218.json
+
+          #igc 临时对策
+          rm -rf rp-ext_wjz304/igc
+          svn co https://github.com/jim3ma/synology-igc/trunk/igc rp-ext_wjz304/igc
+
 
       - name: Get exts lsit
         shell: python
@@ -125,9 +135,18 @@ jobs:
           if __name__ == '__main__':
               exts = {}
               print('####################### pocopico #######################')
-              exts["pocopico"] = getextslist('rp-ext_pocopico', [['https://raw.githubusercontent.com/pocopico/rp-ext/master/',''], ['https://github.com/pocopico/rp-ext/raw/main/',''], ['https://github.com/pocopico/rp-ext/blob/main/','']])
+              reglist=[]
+              reglist.append(['https://raw.githubusercontent.com/pocopico/rp-ext/master/',''])
+              reglist.append(['https://github.com/pocopico/rp-ext/raw/main/',''])
+              reglist.append(['https://github.com/pocopico/rp-ext/blob/main/',''])
+              reglist.append(['https://raw.githubusercontent.com/jim3ma/synology-igc/master/',''])
+              exts["pocopico"] = getextslist('rp-ext_pocopico', reglist)
+              
               print('#######################  wjz304  #######################')
-              exts["wjz304"] = getextslist('rp-ext_wjz304', [['https://raw.githubusercontent.com/wjz304/rp-ext/master/','']])
+              reglist=[]
+              reglist.append(['https://raw.githubusercontent.com/wjz304/rp-ext/master/',''])
+              reglist.append(['https://raw.githubusercontent.com/jim3ma/synology-igc/master/',''])
+              exts["wjz304"] = getextslist('rp-ext_wjz304', reglist)
 
               if len(exts) > 0:
                   print('#######################   exts   #######################')
