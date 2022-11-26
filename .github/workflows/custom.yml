@@ -544,7 +544,7 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ env.issuenumber }}
-          labels: 'custom'
+          labels: 'custom,${{ env.platform }}'
 
       - name: Update Comment Begin
         if: env.issues == 'true' && env.iscustom == 'true'
