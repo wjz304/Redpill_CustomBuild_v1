@@ -221,7 +221,7 @@ jobs:
                   iscustom = 'false'
                   errinfo = 'body 错误, 不符合JSON规范 {}.'.format(e)
 
-              platforms = ['DS918+', 'DS920+', 'DS1520+', 'DS1621+', 'DS1821+', 'DS2422+', 'DS3615xs', 'DS3617xs', 'DS3622xs+', 'DVA1622', 'DVA3221', 'FS2500', 'FS3600', 'RS4021xs+']
+              platforms = ['DS918+', 'DS920+', 'DS923+', 'DS1520+', 'DS1621+', 'DS1821+', 'DS2422+', 'DS3615xs', 'DS3617xs', 'DS3622xs+', 'DVA1622', 'DVA3221', 'FS2500', 'FS3600', 'RS4021xs+']
               if iscustom == 'true' and not platform in platforms:
                   iscustom = 'false'
                   errinfo = 'platform 参数错误, 当前仅支持 {}.'.format(', '.join(platforms))
@@ -645,6 +645,7 @@ jobs:
                   os.system('sed -i "s|echo.*\$(generateMacAddress)|echo \$(generateMacAddress)|g" serialnumbergen.sh')
                   os.system('sed -i "s|echo.*\$(generateSerial \$1)|echo \$(generateSerial \$1)|g" serialnumbergen.sh')
                   platform = '${{ env.platform }}'
+                  if platform == 'DS923+': platform = 'DS920+'         # 当前不支持 DS923+    算号
                   if platform == 'DS1520+': platform = 'DS920+'        # 当前不支持 DS1520+   算号
                   if platform == 'DS1821+': platform = 'DS1621+'       # 当前不支持 DS1821+   算号
                   if platform == 'DS2422+': platform = 'DS1621+'       # 当前不支持 DS2422+   算号
@@ -725,7 +726,7 @@ jobs:
               path=7.1.1/42962
             fi
             curl -L https://global.download.synology.com/download/DSM/release/${path}/DSM_$1_$2.pat -o ds.pat
-            if [ "$1" == "DVA1622" ]; then
+            if [ "$1" == "DVA1622" -o "$1" == "DS923%2B" ]; then
               curl -L https://global.download.synology.com/download/DSM/release/7.0.1/42218/DSM_DS3622xs%2B_42218.pat -o oldpat.tar.gz
             else
               curl -L https://global.download.synology.com/download/DSM/release/7.0.1/42218/DSM_$1_42218.pat -o oldpat.tar.gz
@@ -760,6 +761,9 @@ jobs:
                 ;;
             DS920+)
                 synoarch=geminilake
+                ;;
+            DS923+)
+                synoarch=r1000
                 ;;
             DS1520+)
                 synoarch=geminilake
@@ -869,17 +873,6 @@ jobs:
             find redpill-load/config/DS3622xs+ -type f -name '*3622xs*' -exec rename 's/-3622xs\+/-3622xsp/' '{}' +
             sed -i 's/DS3622xs /DS3622xs+ /g; s/-3622xs+/-3622xsp/g' `find redpill-load/config/DS3622xs+ -type f -name '*config.json'`
 
-            rm -r redpill-load/config/RS4021xs+
-            cp -r redpill-load/config/DS3622xs+ redpill-load/config/RS4021xs+
-            #find redpill-load/config/RS4021xs+ -type d -name '*3622xs*' -execdir rename 's/3622xsp/4021xsp/' '{}' +
-            find redpill-load/config/RS4021xs+ -type f -name '*3622xs*' -exec rename 's/3622xsp/4021xsp/' '{}' +
-            sed -i 's/DS3622xs+/RS4021xs+/g; s/DS3622xs%2B/RS4021xs%2B/g; s/ds3622xsp/rs4021xsp/g; s/3622xsp/4021xsp/g' `find redpill-load/config/RS4021xs+ -type f -name '*config.json'`
-            sed -i 's/f38329b8cdc5824a8f01fb1e377d3b1b6bd23da365142a01e2158beff5b8a424/7afca3970ac7324d7431c1484d4249939bedd4c18ac34187f894c43119edf3a1/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-            sed -i 's/a95d4ab06189460f3b3d13a33e421887b5f3ea09a10535ae0d4c92beb7ff631d/3510afe5b3dfe3662bfe054c1728c8794911da431718b533cd03d2a2c061ffd5/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-            sed -i 's/06964b68e5ccdedd4363dff3986f99686d3c9cb5225e8e4c3d840a1d9cd1330b/b4cc62e9953f226960de98b65887e17dd6df5fa0ad28f665e0b4660dbd5f2fa8/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-            sed -i 's/df8a055d6bc901229f0ba53ed5b4fe024bdf9a1b42f0c32483adefcdac14db4d/143e475fe73c0adb3377361402b4baad21448476e844e55e16d1ed51ffc4c971/g' redpill-load/config/RS4021xs+/7.1.0-42661/config.json
-            sed -i 's/432f315818adad4e1ca54040557e164caf2937004e2d009aac8865391353e2f6/40775a6b9b4fae2887cd07c0efdfb26e738e2b8de73602657f7bc4407ae4a688/g' redpill-load/config/RS4021xs+/7.1.1-42962/config.json
-
             cp -r redpill-load/config/DS3622xs+ redpill-load/config/FS3600
             #find redpill-load/config/FS3600 -type d -name '*3622xs*' -execdir rename 's/3622xsp/fs3600/' '{}' +
             find redpill-load/config/FS3600 -type f -name '*3622xs*' -exec rename 's/3622xsp/fs3600/' '{}' +
@@ -943,7 +936,7 @@ jobs:
           # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}').ko
           # cd ..
 
-          dtbs=(DS920+ DS1520+ DS1621+ DS1821+ DS2422+ DVA1622 FS2500)
+          dtbs=(DS920+ DS923+ DS1520+ DS1621+ DS1821+ DS2422+ DVA1622 FS2500)
           for item in ${dtbs[@]}
           do
             if [ "${item}" == "${platform}" ]; then
