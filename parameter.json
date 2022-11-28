@@ -52,7 +52,7 @@
     },
     "maxdisks": {
         "name": "maxdisks",
-        "description": "如不了解请保持默认, 请输入最大硬盘数. 默认: 无, 范围: 1~32",
+        "description": "如不了解请保持默认, 请输入最大硬盘数. 默认: 无, 范围: 1~48",
         "detailedinfo": "请输入最大硬盘数.",
         "required": false,
         "default": "",
@@ -60,7 +60,7 @@
     },
     "maxlanport": {
         "name": "maxlanport",
-        "description": "如不了解请保持默认, 请输入最大网卡索引. 默认: 7, 范围: 0~31",
+        "description": "如不了解请保持默认, 请输入最大网卡索引. 默认: 7, 范围: 0~47",
         "detailedinfo": "请输入最大网卡索引.",
         "required": false,
         "default": "7",
