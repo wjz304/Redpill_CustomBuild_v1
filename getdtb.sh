@@ -6,10 +6,12 @@ chmod a+x dtbpatch
 
 wget https://raw.githubusercontent.com/pocopico/rp-ext/main/dtbpatch/releases/dtc
 chmod a+x dtc
-dtc -I dtb -O dts output.dtb > output.dts
+./dtc -I dtb -O dts output.dtb > output.dts
 
 echo 请在 PC 上输入以下链接下载 dtb 文件：
 curl -w '\n' --upload-file output.dtb https://transfer.sh
+echo 
 
 echo 请在 PC 上输入以下链接下载 dts 文件：
 curl -w '\n' --upload-file output.dts https://transfer.sh
+echo 
