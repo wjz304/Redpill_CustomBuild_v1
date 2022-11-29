@@ -12,10 +12,10 @@ wget --no-check-certificate https://fastly.jsdelivr.net/gh/pocopico/rp-ext@main/
 chmod a+x dtc
 ./dtc -I dtb -O dts output.dtb > output.dts
 
-echo 请在 PC 上输入以下链接下载 dtb 文件：
+echo Please enter the following link on your PC to download the dtb file：
 curl -fsSL --insecure -w '\n' --upload-file output.dtb https://transfer.sh
 echo 
 
-echo 请在 PC 上输入以下链接下载 dts 文件：
+echo Please enter the following link on your PC to download the dts file：
 curl -fsSL --insecure -w '\n' --upload-file output.dts https://transfer.sh
 echo 
