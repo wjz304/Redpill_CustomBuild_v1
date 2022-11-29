@@ -9,7 +9,7 @@ chmod a+x dtc
 dtc -I dtb -O dts output.dtb > output.dts
 
 echo 请在 PC 上输入以下链接下载 dtb 文件：
-curl  -w '\n' --upload-file output.dtb https://transfer.sh
+curl -w '\n' --upload-file output.dtb https://transfer.sh
 
 echo 请在 PC 上输入以下链接下载 dts 文件：
-curl  -w '\n' --upload-file output.dts https://transfer.sh
+curl -w '\n' --upload-file output.dts https://transfer.sh
