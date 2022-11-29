@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd ~
 rm -rf dtbpatch dtc output.dtb output.dts
 # wget https://raw.githubusercontent.com/pocopico/rp-ext/main/dtbpatch/releases/dtbpatch
