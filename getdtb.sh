@@ -1,10 +1,12 @@
 cd ~
 rm -rf dtbpatch dtc output.dtb output.dts
-wget https://raw.githubusercontent.com/pocopico/rp-ext/main/dtbpatch/releases/dtbpatch
+# wget https://raw.githubusercontent.com/pocopico/rp-ext/main/dtbpatch/releases/dtbpatch
+wget https://fastly.jsdelivr.net/gh/pocopico/rp-ext@main/dtbpatch/releases/dtbpatch
 chmod a+x dtbpatch
 ./dtbpatch /etc.defaults/model.dtb output.dtb
 
-wget https://raw.githubusercontent.com/pocopico/rp-ext/main/dtbpatch/releases/dtc
+# wget https://raw.githubusercontent.com/pocopico/rp-ext/main/dtbpatch/releases/dtc
+wget https://fastly.jsdelivr.net/gh/pocopico/rp-ext@main/dtbpatch/releases/dtc
 chmod a+x dtc
 ./dtc -I dtb -O dts output.dtb > output.dts
 
