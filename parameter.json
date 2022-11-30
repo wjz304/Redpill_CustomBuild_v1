@@ -159,7 +159,7 @@
     "dtb": {
         "name": "dtb",
         "description": "请输入 dtb 文件的下载链接, 仅 DS920+, DS923+, DS1621+, DS2422+, DVA1622 需要填写, 其他型号请勿填写. ",
-        "detailedinfo": "需要自行制作dts/dtb 文件, 制作方法参考主页说明.\n支持的文件类型: .dts,.dtb,.tar.gz,.zip\n四盘位以下可尝试不填写, 将自动编译.",
+        "detailedinfo": "需要自行制作dts/dtb 文件, 制作方法参考主页说明. (支持的文件类型: .dts,.dtb,.tar.gz,.zip)\n该字段可填入三种类型:\n空(不填写): 将自动编译.(适用于硬盘数<=4个 且不需要插满.);\n auto: 将自动制作.(无个数限制, 但仅适配当前出插入的硬盘.).\nURL(dtb的下载链接): 将在编译时植入使用.",
         "required": false,
         "default": "",
         "type": "string"
