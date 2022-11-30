@@ -344,7 +344,7 @@ jobs:
                   iscustom = 'false'
                   errinfo = 'diskidxmap 和 sataportmap 参数不可单独定制, 且 diskidxmap的位数应该为sataportmap位数的2倍.'
 
-              if iscustom == 'true' and dtb != '':
+              if iscustom == 'true' and dtb != '' and dtb != 'auto':
                   url = dtb
                   try:
                       try:
@@ -917,7 +917,15 @@ jobs:
           for item in ${dtbs[@]}
           do
             if [ "${item}" == "${platform}" ]; then
-              if [ -n "${{ env.dtb }}" ]; then
+              if [ -z "${{ env.dtb }}" ]; then
+                echo "========================Add redpill-dtb========================="
+                ./ext-manager.sh add https://raw.githubusercontent.com/wjz304/rp-ext/master/redpill-dtb/rpext-index.json
+                ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} pocopico.dtb
+              elif [ "${{ env.dtb }}" == "auto" ]; then
+                echo "==========================Add dtbpatch=========================="
+                ./ext-manager.sh add https://raw.githubusercontent.com/wjz304/rp-ext/master/dtbpatch/rpext-index.json
+                ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} dtbpatch
+              else
                 echo "=====================Add redpill-dtb-static====================="
                 ./ext-manager.sh add https://raw.githubusercontent.com/wjz304/rp-ext/master/redpill-dtb-static/rpext-index.json
                 ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} redpill-dtb-static
@@ -925,10 +933,6 @@ jobs:
                 dtbextfile="$(find custom -name model_${synoplatform}.dtb)"
                 echo Copying ${dtbuserfile} to ${dtbextfile} ...
                 sudo cp ${dtbuserfile} ${dtbextfile}
-              else
-                echo "========================Add redpill-dtb========================="
-                ./ext-manager.sh add https://raw.githubusercontent.com/wjz304/rp-ext/master/redpill-dtb/rpext-index.json
-                ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} pocopico.dtb
               fi
             fi
           done
