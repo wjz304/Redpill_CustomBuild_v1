@@ -116,7 +116,7 @@
         setTips();
         $("#titleLabel").on("click", changemode);
         httpGetAsync(
-          cdn + "parameter.json" + "?+Math.random()",
+          cdn + "parameter.json" + "?" + Math.random(),
           function (result) {
             result = JSON.parse(result);
             $("#inputs").find("div").remove(); //html('');
@@ -152,7 +152,7 @@
       }
 
       function setTips() {
-        httpGetAsync(cdn + "tips.md" + "?+Math.random()", function (result) {
+        httpGetAsync(cdn + "tips.md" + "?" + Math.random(), function (result) {
           var html = result.replace(/\n/g, "<br />");
           $("#content").html(html);
         });
@@ -208,7 +208,7 @@
       }
 
       function changePlatform() {
-        httpGetAsync(cdn + "loads.json" + "?+Math.random()", function (result) {
+        httpGetAsync(cdn + "loads.json" + "?" + Math.random(), function (result) {
           result = JSON.parse(result);
           var xreleases = result["pocopico_develop"][$("#platform").val()];
           var isselect = false;
@@ -229,7 +229,7 @@
       }
 
       function changeversion() {
-        httpGetAsync(cdn + "loads.json" + "?+Math.random()", function (result) {
+        httpGetAsync(cdn + "loads.json" + "?" + Math.random(), function (result) {
           result = JSON.parse(result);
           var xreleases = result["jumkey_develop"][$("#platform").val()];
           var isselect = false;
@@ -269,7 +269,7 @@
         platform = $("#platform").val().replace("+", "p").toLowerCase();
         version = $("#version").val().split("-")[1];
         var exts = {};
-        httpGetAsync(cdn + "exts.json" + "?+Math.random()", function (result) {
+        httpGetAsync(cdn + "exts.json" + "?" + Math.random(), function (result) {
           result = JSON.parse(result);
           extskey = "pocopico";
           if (dev == "1") extskey = "wjz304";
@@ -343,7 +343,7 @@
         var body = {};
         //body["info"] = "整个编译过程一般在5分钟左右(受驱动数量和版本影响), 并发较多时有概率出现未触发或者网络阻塞的情况, 如长时间未收到[bot]的回复, 请reopen或者重新创建Issue.";
         httpGetAsync(
-          cdn + "parameter.json" + "?+Math.random()",
+          cdn + "parameter.json" + "?" + Math.random(),
           function (result) {
             result = JSON.parse(result);
             for (var key in result) {
