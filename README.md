@@ -11,8 +11,8 @@
 >编译来源： [@pocopico](https://github.com/pocopico/redpill-load) [@jumkey](https://github.com/jumkey/redpill-load)  
 >驱动来源： [@pocopico](https://github.com/pocopico/rp-ext)  
 
-在此, 再次, 声明!!!
-本人只是按照通用编译流程整合各位大佬的redpill-load 进行编译. 我只是解决编译的问题, 任何引导内部问题我都解决不了(当然知道的问题肯定会协助大家解决).
+在此, 再次, 声明!!!  
+本人只是按照通用编译流程整合各位大佬的redpill-load 进行编译. 我只是解决编译的问题, 任何引导内部问题我都解决不了(当然知道的问题肯定会协助大家解决).  
 说通俗点, 我只是相当于一个物流, 你要哪家(大佬)的货(引导)我就给你配送哪家(大佬)的货(引导).
 
 
