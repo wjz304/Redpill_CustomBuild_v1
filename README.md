@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/issues-search?label=%E6%AF%8F%E6%97%A5%E6%9E%84%E5%BB%BA&query=repo%3Awjz304%2FRedpill_CustomBuild%20label%3Aschedule)](https://github.com/wjz304/Redpill_CustomBuild/issues?q=label%3Aschedule)  
 
 ## 介绍  
-[Redpill_CustomBuild](https://github.com/wjz304/Redpill_CustomBuild)  
+[Redpill_CustomBuild](https://github.com/wjz304/Redpill_CustomBuild_v1)  
 一个自定义配置及驱动并通过 Github Action 编译 DSM redpill 引导的平台.  
 本库并没有实际的技术创新, 仅做了一个参数适配, 使一些定制更简单, 并把过程搬到线上, 依赖微软强大的服务器使其快速得到想要的引导文件.  
 高度依赖以下大佬的项目, 请给以下各位大佬点赞.
@@ -22,14 +22,14 @@
 ## 链接
 ***如果没有魔法，请参考 https://github.com/wjz304/hosts 设置hosts***  
 ***请使用 Chromium 内核浏览器 (Chrome / Edge / 360极速 ...)***  
-[【👉快速创建】](https://wjz304.github.io/Redpill_CustomBuild/Issues.html)  
-[【👉快速创建】(dev)](https://wjz304.github.io/Redpill_CustomBuild/Issues.html?dev=1)  
+[【👉快速创建】](https://wjz304.github.io/Redpill_CustomBuild_v1/Issues.html)  
+[【👉快速创建】(dev)](https://wjz304.github.io/Redpill_CustomBuild_v1/Issues.html?dev=1)  
 `普通模式默认使用pocopico的驱动库, dev模式默认使用我fork的驱动库(如果报 Checksum 错, 请尝试使用(dev)模式), `  
 `并发较多时, 有概率出现curl错误或者 未触发编译的情况, 过几分钟再试...`  
 `如果你看不懂, 或者其他疑难杂症, 请不要浪费时间. 尝试使用arpl构建. https://github.com/fbelavenuto/arpl`
 
 ## 使用  
-在本项目 Issues 中创建问题(符合下述规范), 按需填写即可发起定制构建[【👉图文说明】](https://github.com/wjz304/Redpill_CustomBuild/blob/main/guide/Issues.md) [【👉注意事项】](https://github.com/wjz304/Redpill_CustomBuild/blob/main/tips.md).  
+在本项目 Issues 中创建问题(符合下述规范), 按需填写即可发起定制构建[【👉图文说明】](https://github.com/wjz304/Redpill_CustomBuild_v1/blob/main/guide/Issues.md) [【👉注意事项】](https://github.com/wjz304/Redpill_CustomBuild_v1/blob/main/tips.md).  
 
 ### Issue title:
 标题请以 custom 开头(不区分大小写), 且不要包含'(单引号),"(双引号) 等转义字符.
