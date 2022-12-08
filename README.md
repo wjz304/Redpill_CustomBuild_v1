@@ -1,4 +1,4 @@
-# Redpill_CustomBuild
+# Redpill_CustomBuild_v1(old)
 # 本库仅作为备份, 并不会维护。请前往 https://github.com/wjz304/Redpill_CustomBuild  
 
 [![](https://img.shields.io/github/issues-search?label=%E5%AE%9A%E5%88%B6%E6%AC%A1%E6%95%B0&query=repo%3Awjz304%2FRedpill_CustomBuild%20label%3Acustom)](https://github.com/wjz304/Redpill_CustomBuild/issues?q=label%3Acustom)
